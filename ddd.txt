@@ -1,0 +1,34 @@
+
+javafxpackager -deploy -native image -outdir packages -outfile record -srcdir . -srcfiles record.jar -appclass com.mays.record.App
+
+
+-- localhost/mays /root/123456
+CREATE TABLE `user_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) DEFAULT NULL,
+  `type` int(1) DEFAULT NULL COMMENT '0-员工，1-客户',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_user` (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `produce_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(11) DEFAULT NULL COMMENT '种类',
+  `pack_num` int(11) DEFAULT NULL COMMENT '包数',
+  `weight` int(11) DEFAULT NULL COMMENT '重量，单位：kg',
+  `worker` varchar(255) DEFAULT NULL COMMENT '员工',
+  `produce_time` date DEFAULT NULL COMMENT '生产时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='生产数据表';
+
+CREATE TABLE `sales_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(11) DEFAULT NULL COMMENT '种类',
+  `pack_num` int(11) DEFAULT NULL COMMENT '包数',
+  `weight` int(11) DEFAULT NULL COMMENT '重量，单位：kg',
+  `buyer` varchar(255) DEFAULT NULL COMMENT '买方',
+  `sales_time` date DEFAULT NULL COMMENT '销售日期',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='销售数据表';
